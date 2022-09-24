@@ -1,8 +1,3 @@
-resource "google_app_engine_application" "app" {
-  project     = "hack-aso-group-09"
-  location_id = "us-east1"
-}
-
 resource "google_artifact_registry_repository" "frontend-repo" {
   location = "us-east1"
   repository_id = "hacka_09_frontend-repo"
