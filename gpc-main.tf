@@ -13,7 +13,7 @@ resource "google_artifact_registry_repository" "backend-repo" {
 }
 
 resource "google_sql_database_instance" "instance" {
-  name = "spot_music_db_instance"
+  name = "spotmusic_instance"
   database_version = "MYSQL_8_0"
   region = "us-east1"
   settings {
@@ -23,21 +23,21 @@ resource "google_sql_database_instance" "instance" {
 
 resource "google_sql_database" "database" {
   name = "playlist"
-  instance = "spot_music_db_instance"
+  instance = "{google_sql_database_instance.instance.name}"
   charset = "utf8"
   collation = "utf8_general_ci"
 }
 
 resource "google_sql_user" "users" {
   name = "root"
-  instance = "spot_music_db_instance"
+  instance = "{google_sql_database_instance.instance.name}"
   host = "%"
   password = "mypassw0rd"
 }
 
 resource "google_sql_user" "playuser" {
   name = "playuser"
-  instance = "spot_music_db_instance"
+  instance = "{google_sql_database_instance.instance.name}"
   host = "%"
   password = "123456"
 }
