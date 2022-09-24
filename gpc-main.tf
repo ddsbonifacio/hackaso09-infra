@@ -13,7 +13,7 @@ resource "google_artifact_registry_repository" "backend-repo" {
 }
 
 resource "google_sql_database_instance" "instance" {
-  name = "spotmusic_instance"
+  name = "spotmusicinstance"
   database_version = "MYSQL_8_0"
   region = "us-east1"
   settings {
